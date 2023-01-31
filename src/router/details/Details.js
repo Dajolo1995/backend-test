@@ -3,6 +3,7 @@ const api = express.Router();
 
 const {
   newProductsDetails,
+  detailProductCategory,
 } = require("../../controller/detailsProduct/SetDetailsProduct");
 
 const {
@@ -13,5 +14,6 @@ const {
 api.post("/details", newProductsDetails);
 api.get("/details", getDetailsProducts);
 api.post("/detail", getDetailsProductId);
+api.put("/detail/:id", detailProductCategory);
 
 module.exports = api;

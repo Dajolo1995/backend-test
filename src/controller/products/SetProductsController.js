@@ -21,6 +21,26 @@ const newProducts = async (req, res) => {
   }
 };
 
+const updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    let product = await Products.findOne({ id });
+
+    const newUser = req.body;
+
+    product = await Products.findByIdAndUpdate({ _id: id }, newUser, {
+      new: true,
+    });
+
+    res.status(200).send(product);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ msg: "Internal error server" });
+  }
+};
+
 module.exports = {
   newProducts,
+  updateProduct,
 };

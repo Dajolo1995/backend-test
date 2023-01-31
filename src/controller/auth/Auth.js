@@ -14,13 +14,15 @@ const auth = async (req, res) => {
       return res.status(400).json({ msg: "El usuario no existe" });
     }
 
+    if (usuario.state === "false") {
+      return res.status(403).json({ msg: "User forbiden" });
+    }
+
     // Revisar el password
     const passCorrecto = await bcrypt.compare(password, usuario.password);
     if (!passCorrecto) {
       return res.status(400).json({ msg: "Password Incorrecto" });
     }
-
-    console.log(usuario);
 
     // Si todo es correcto Crear y firmar el JWT
     const payload = {

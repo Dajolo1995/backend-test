@@ -9,6 +9,7 @@ const {
 const {
   getCategory,
   getCategoryId,
+  getcategoryActive,
 } = require("../../controller/category/GetCategoryController");
 
 api.post(
@@ -18,6 +19,8 @@ api.post(
 );
 
 api.get("/category", getCategory);
+
+api.get("/categoryActive", getcategoryActive);
 
 api.put("/category/:id", updateCategory);
 

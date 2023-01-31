@@ -14,9 +14,7 @@ const getDetailsProducts = async (req, res) => {
 const getDetailsProductId = async (req, res) => {
   try {
     const { idProducts } = req.body;
-    const products = await Products.find({ idProducts });
-
-    console.log(req.body);
+    const products = await Products.find({ idProducts, state: "true" });
 
     return res.status(200).send({ products });
   } catch (error) {
