@@ -19,7 +19,6 @@ const detailProductCategory = async (req, res) => {
 
     let detailProduct = await Products.findOne({ id });
 
-    console.log(detailProduct)
 
     const newUser = req.body;
 
